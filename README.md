@@ -1,6 +1,6 @@
 # mongoDB2.0
 
-This my projcet consists if an exchange platform, where it is possible to buy and sell bitcoins.
+This my projcet consists in an exchange platform, where it is possible to buy and sell bitcoins.
 
 I tried to reproduce as much as possible the operation of a real order book.
 
