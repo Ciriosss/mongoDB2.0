@@ -1,0 +1,76 @@
+{% extends "app/base.html" %}
+{% block content %}
+
+<h1>ACTIVE ORDERS </h1>
+<br>
+ <style>
+    table{
+    font-size:20px;
+    height:200px;
+    }
+    th{
+    color:#5f788a;
+    }
+    td,th{
+    width:150px;
+    text-align:left;
+    }
+    </style>
+<h4><font color = #fafafa> Here you can see all open-orders </font> </h4> <br><br>
+    <legend class = 'border-bottom mb-4'><h5> <font color="#7FFFD4"> BUY ORDERS </font></h5> </legend>
+    <table>
+    <tr>
+        <th>ID PROFILE</th>
+        <th>PRICE</th>
+        <th>QUANTITY</th>
+        <th>DATETIME</th>
+        <th>REMAINING</th>
+    </tr>
+
+    {% for order in buyorders %}
+
+        <tr>
+                <td> <b><font color = 'white'>  {{ order.profile.id }}</font></b></td>
+                <td> <b><font color = 'white'>  {{ order.price }}</font></b></td>
+                <td> <b><font color = 'white'>  {{ order.quantity }}</font></b></td>
+                <td> <b><font color = 'white'>  {{ order.datetime}}</font></b></td>
+                <td> <b><font color = 'white'>  {{ order.remaining}}</font></b></td>
+            </article>
+        </tr>
+
+
+    {% endfor %}
+
+     </table>
+
+<br>
+<br>
+<br>
+
+
+    <legend class = 'border-bottom mb-4'><h5> <font color="#7FFFD4"> SELL ORDERS </font></h5> </legend>
+    <table>
+    <tr>
+        <th>ID PROFILE</th>
+        <th>PRICE</th>
+        <th>QUANTITY</th>
+        <th>DATETIME</th>
+        <th>REMAINING</th>
+    </tr>
+
+    {% for order in sellorders %}
+
+        <tr>
+                <td> <b><font color = 'white'>  {{ order.profile.id }}</font></b></td>
+                <td> <b><font color = 'white'>  {{ order.price }}</font></b></td>
+                <td> <b><font color = 'white'>  {{ order.quantity }}</font></b></td>
+                <td> <b><font color = 'white'>  {{ order.datetime}}</font></b></td>
+                <td> <b><font color = 'white'>  {{ order.remaining}}</font></b></td>
+            </article>
+        </tr>
+
+
+    {% endfor %}
+
+     </table>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+<h1>  Profile of {{ user}}</h1>
+<br>
+<legend class = 'border-bottom mb-4'><h2> <font color="#7FFFD4"> PERSONAL INFO </font></h2> </legend> <br><br>
+<div class="media-body">
+    <strong><font color = "white">FIRST NAME :</font> <font color = "#7FFFD4">{{ user.first_name}}</font></strong><br>
+    <strong><font color = "white">LAST NAME :</font> <font color = "#7FFFD4">{{ user.last_name}} </font></strong><br>
+    <strong><font color = "white">EMAIL : </font><font color = "#7FFFD4">{{ user.email}}</font></strong><br>
+    <strong><font color = "white">BALANCE :</font> <font color = "#7FFFD4">{{ balance }} € </font></strong><br>
+    <strong><font color = "white">BITCOIN :</font> <font color = "#7FFFD4">{{ BTC }} BTC</font> </strong><br>
+    <strong><font color = "white">PENDING BALANCE :</font> <font color = "#7FFFD4">{{ profile.pendingBalance }} € </font> </strong><br>
+    <strong><font color = "white">PENDING BITCOINS :</font> <font color = "#7FFFD4">{{ profile.pendingBTC }} BTC</font> </strong>
+</div>
+<br><br>
+<!-- USER ORDERS-->
+    <legend class = 'border-bottom mb-4'><h2> <font color="#7FFFD4"> YOUR ORDERS </font></h2> </legend> <br><br>
+
+    <legend class = 'border-bottom mb-4'><h5> <font color="#7FFFD4"> BUY ORDERS </font></h5> </legend>
+
+                {% for order in buyorders %}
+                    <tr>
+                        <td>  <article class="media content-section"><b>
+                            {{ order.price }} €     -
+                            {{ order.quantity }} BTC    -
+                            {{ order.datetime }}   -
+
+                        {% if order.remaining == 0 %}
+                           <font color="#adad00"> CLOSE </font>
+                        {% else%}
+                            <font color="adad00"> OPEN </font>- {{order.remaining}}
+                        {% endif %}
+
+                        </b></article></td>
+                    </tr>
+                {% endfor %}
+
+    <br><br><br>
+    <legend class = 'border-bottom mb-4'><h5> <font color="#7FFFD4"> SELL ORDERS </font></h5> </legend>
+
+    {% for order in sellorders %}
+         <tr>
+             <td>  <article class="media content-section"><b>
+                 {{ order.price }} €     -
+                 {{ order.quantity }} BTC    -
+                 {{ order.datetime }}   -
+
+                 {% if order.remaining == 0 %}
+                    <font color="#adad00"> CLOSE </font>
+                 {% else%}
+                    <font color="adad00"> OPEN </font>- {{order.remaining}}
+                 {% endif %}
+
+             </b></article></td>
+         </tr>
+
+    {% endfor %}
+{% endblock %}

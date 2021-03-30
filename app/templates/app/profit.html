@@ -1,0 +1,38 @@
+{% extends "app/base.html" %}
+{% block content %}
+
+<h1>TOTAL BALANCE </h1>
+<br>
+<h4><font color = #fafafa> In this page you can can choose an ID of user and see his profit</font> </h4> <br><br>
+<h3><font color = #7FFFD4>Choose a profile ID</font> </h3> <br><br>
+
+    <form class="form-inline mt-2 mt-md-0"  action="" method="GET">
+            <select name="profile" id="profile">
+              {% for profile in profiles %}
+                <option value=" {{profile.id}} " name = "profile"> {{profile.id}} </option>
+              {% endfor%}
+            </select>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Find profit</button>
+    </form>
+<br>
+<br>
+    {% if message %}
+    <h3><font color = #fafafa>Profit of the profile with ID </font>
+        <font color = #7FFFD4>" {{ id }}" </font>
+        <font color = #fafafa>  is </font>
+        <font color = #7FFFD4>{{ profit }}  € </font>   </h3> <br>
+
+        <h4> {{ message }}</h4>
+    {% endif %}
+<br>
+<br>
+
+<legend class = 'border-bottom mb-4'><h2><font color = #7FFFD4> How profit is calculated?</font></h2> </legend>
+
+        <h4><font color = #fafafa>
+        To determinate the results of users's order we have considered the difference between <font color = #7FFFD4>RAVENUES & COSTS</font></font> </h4> <br><br>
+
+        <h3> RAVENUES = <font color = #7FFFD4> SELLING PRICE * SELLED QUANTITY</font></h3>
+
+        <h3> COSTS =  <font color = #7FFFD4> PURCHASE PRICE * EXCHANGED QUANTITY</font></h3>
+{% endblock %}
