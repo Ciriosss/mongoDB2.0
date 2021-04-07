@@ -113,9 +113,9 @@ def matchOrder(order, request):
 
                 elif order.remaining < buyorder.remaining:
                     seller.balance += float(buyorder.price) * float(order.remaining)
-                    buyer.pending_balance -= float(buyorder.price) * float(buyorder.remaining)
+                    buyer.pendingBalance -= float(buyorder.price) * float(buyorder.remaining)
                     buyer.BTC += order.remaining
-                    seller.pending_BTC += order.remaining
+                    seller.pendingBTC += order.remaining
                     buyorder.remaining -= order.remaining
                     order.remaining = 0
                     buyorder.save()
